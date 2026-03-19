@@ -14,7 +14,6 @@ end entity;
 
 architecture rtl of mux_4to1_1bit is
 begin
-     -- Selección para una de las 4 entradas
     with Sel select
         F <= A when "00",
              B when "01",

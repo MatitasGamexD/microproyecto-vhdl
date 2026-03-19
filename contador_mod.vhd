@@ -49,7 +49,7 @@ architecture structural of contador_mod is
     constant LIM_VEC : std_logic_vector(3 downto 0) := std_logic_vector(to_unsigned(LIMITE, 4));
 
 begin
-    -- Q + 1
+
     SUMADOR: adder_4bit
         port map(
             A    => q_reg,
@@ -58,8 +58,7 @@ begin
             Sum  => q_sum,
             Cout => open
         );
-    
-	 -- MUX para elegir siguiente estado (mantener reset cargar o sumar limite)
+
     MUX_SIGUIENTE: mux_4to1_4bit
         port map(
             A   => q_reg,   -- mantener
@@ -70,7 +69,6 @@ begin
             F   => q_next
         );
 
-	-- Lógica combinacional de control
     process(reset, tick_1hz, enable, q_reg)
     begin
         if reset = '1' then
@@ -84,7 +82,6 @@ begin
         end if;
     end process;
 
-	  -- Registro del contador
     process(clk)
     begin
         if rising_edge(clk) then
@@ -92,7 +89,6 @@ begin
         end if;
     end process;
 
-	 -- Acarreo al siguiente contador
     carry <= '1' when (tick_1hz = '1' and enable = '1' and q_reg = LIM_VEC) else '0';
     q <= q_reg;
 

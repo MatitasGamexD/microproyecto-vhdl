@@ -15,11 +15,11 @@ entity divisor_tick is
 end entity;
 
 architecture rtl of divisor_tick is
-    constant DIVISOR   : natural := CLK_HZ / OUT_HZ;
-    constant MAX_COUNT : natural := DIVISOR - 1;
+    constant DIVISOR  : natural := CLK_HZ / OUT_HZ;
+    constant MAX_COUNT: natural := DIVISOR - 1;
 
-    signal count_reg : natural range 0 to MAX_COUNT := 0;
-    signal tick_reg  : std_logic := '0';
+    signal count_reg  : natural range 0 to MAX_COUNT := 0;
+    signal tick_reg   : std_logic := '0';
 begin
     process(clk)
     begin

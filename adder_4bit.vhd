@@ -27,14 +27,12 @@ architecture structural of adder_4bit is
     signal C1, C2, C3, C4 : std_logic;
 
 begin
-
-    -- Si S = 1, invierte B para hacer la resta en complemento a 2
     BX(0) <= B(0) xor S;
     BX(1) <= B(1) xor S;
     BX(2) <= B(2) xor S;
     BX(3) <= B(3) xor S;
-    -- Encadenamiento de 4 full adders
-    -- Nota de clase: para resta correcta el Cin del primer full adder debe ser S
+
+    -- OJO: para resta correcta el Cin del primer full adder debe ser S
     FA0: full_adder port map(A => A(0), B => BX(0), Cin => S,  Sum => Sum(0), Cout => C1);
     FA1: full_adder port map(A => A(1), B => BX(1), Cin => C1, Sum => Sum(1), Cout => C2);
     FA2: full_adder port map(A => A(2), B => BX(2), Cin => C2, Sum => Sum(2), Cout => C3);

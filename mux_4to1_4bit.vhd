@@ -26,8 +26,6 @@ architecture structural of mux_4to1_4bit is
     end component;
 
 begin
-
-    -- Se construye un MUX de 4 bits con 4 MUX de 1 bit
     M0: mux_4to1_1bit port map(A => A(0), B => B(0), C => C(0), D => D(0), Sel => Sel, F => F(0));
     M1: mux_4to1_1bit port map(A => A(1), B => B(1), C => C(1), D => D(1), Sel => Sel, F => F(1));
     M2: mux_4to1_1bit port map(A => A(2), B => B(2), C => C(2), D => D(2), Sel => Sel, F => F(2));

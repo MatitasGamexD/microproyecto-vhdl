@@ -13,9 +13,6 @@ end entity;
 
 architecture rtl of full_adder is
 begin
-    -- Suma de un bit
     Sum  <= A xor B xor Cin;
-	 
-	 -- Acarreo de la salida
     Cout <= (A and B) or (A and Cin) or (B and Cin);
 end architecture;
